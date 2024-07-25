@@ -29,11 +29,18 @@ useHtmxExtension ext = script_ [src_ $ htmxSrc <> extensionPath ext] ("" :: Html
 useHtmxExt :: (Monad m) => HtmxExtension -> HtmlT m ()
 useHtmxExt ext = script_ [src_ $ htmxSrc <> extensionPath (render ext)] ("" :: Html ())
 
+-- | Same as 'useHtmxExt' but with a versioned url
+useHtmxExtV :: (Monad m) => (Natural, Natural, Natural) -> HtmxExtension -> HtmlT m ()
+useHtmxExtV v ext = script_ [src_ $ htmxSrcWithSemVer v <> extensionPath (render ext)] ("" :: Html ())
+
 -- | A typesafe version of 'useHtmxExtension' based on the "included" extensions
 -- that the htmx codebase is tested against
 useHtmxExts :: (Monad m) => [HtmxExtension] -> HtmlT m ()
-useHtmxExts exts = forM_ exts $ \ext ->
-    script_ [src_ $ htmxSrc <> extensionPath (render ext)] ("" :: Html ())
+useHtmxExts exts = forM_ exts useHtmxExt
+
+-- | Same as 'useHtmxExts' but with a versioned url
+useHtmxExtsV :: (Monad m) => (Natural, Natural, Natural) -> [HtmxExtension] -> HtmlT m ()
+useHtmxExtsV v exts = forM_ exts (useHtmxExtV v)
 
 -- | Choose the version of htmx to use using a 3-tuple representing semantic versioning
 useHtmxVersion :: (Monad m) => (Natural, Natural, Natural) -> HtmlT m ()
@@ -50,7 +57,7 @@ useHtmxVersionExtension semVer ext =
 -- (lucid-htmx). It is the version of the documentation that the implementation
 -- is based off of.
 recommendedVersion :: (Natural, Natural, Natural)
-recommendedVersion = (1, 9, 12)
+recommendedVersion = (2, 0, 1)
 
 htmxSrc :: Text
 htmxSrc = "https://unpkg.com/htmx.org"
