@@ -59,7 +59,7 @@ useHtmxVersion semVer = script_ [src_ $ htmxSrcWithSemVer semVer] ("" :: Html ()
 -- (lucid-htmx). It is the version of the documentation that the implementation
 -- is based off of.
 recommendedVersion :: (Natural, Natural, Natural)
-recommendedVersion = (2, 0, 1)
+recommendedVersion = (2, 0, 0)
 
 htmxSrc :: Text
 htmxSrc = "https://unpkg.com/htmx.org"
