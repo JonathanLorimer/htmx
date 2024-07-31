@@ -1,5 +1,5 @@
 {
-  description = "lucid-htmx";
+  description = "htmx";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -19,7 +19,7 @@
             overrides = hfinal: hprev:
               with pkgs.haskell.lib; {
                 # Internal Packages
-                lucid-htmx = overrideCabal (hfinal.callCabal2nix "lucid-htmx" ./. {}) (drv: {checkPhase = "true";});
+                htmx = overrideCabal (hfinal.callCabal2nix "htmx" ./. {}) (drv: {checkPhase = "true";});
               };
           };
         });
@@ -30,8 +30,8 @@
     packages = forAllSystems (
       {hsPkgs, ...}: {
         inherit hsPkgs;
-        lucid-htmx = hsPkgs.lucid-htmx;
-        default = hsPkgs.lucid-htmx;
+        htmx = hsPkgs.htmx;
+        default = hsPkgs.htmx;
       }
     );
 
@@ -45,13 +45,13 @@
       ...
     }: {
       default = hsPkgs.shellFor {
-        name = "lucid-htmx";
+        name = "htmx";
         shellHook = ''
           export LOCALE_ARCHIVE="${pkgs.glibcLocales}/lib/locale/locale-archive"
           export LC_ALL=C.UTF-8
         '';
         packages = p: [
-          p.lucid-htmx
+          p.htmx
         ];
         buildInputs = with pkgs; [
           hsPkgs.haskell-language-server
