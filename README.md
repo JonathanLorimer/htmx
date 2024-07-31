@@ -1,1 +1,1 @@
-# lucid-htmx
+# htmx for Haskell
