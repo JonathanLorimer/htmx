@@ -12,6 +12,7 @@ import Lucid (Html, HtmlT, script_, src_)
 import Lucid.Base (Attribute, makeAttribute)
 import Lucid.Htmx.Event
 import Lucid.Htmx.Render
+import Lucid.Htmx.Swap (Swap)
 
 -- | <https://htmx.org/attributes/hx-get/>
 -- issues a GET to the specified URL
@@ -43,6 +44,11 @@ hxSelectOob_ = makeAttribute "hx-select-oob"
 -- controls how content will swap in (outerHTML, beforeend, afterend, …)
 hxSwap_ :: Text -> Attribute
 hxSwap_ = makeAttribute "hx-swap"
+
+-- | Like 'hxSwap' but takes a strongly typed swap style.
+-- This doesn't allow [modifiers](https://htmx.org/attributes/hx-swap/#modifiers) to be applied.
+hxSwapS_ :: Swap -> Attribute
+hxSwapS_ = makeAttribute "hx-swap" . render
 
 -- | <https://htmx.org/attributes/hx-swap-oob/>
 -- mark element to swap in from a response (out of band)

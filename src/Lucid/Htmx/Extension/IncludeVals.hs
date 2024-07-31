@@ -1,3 +1,10 @@
+{- |
+Module      : Lucid.Htmx.Extension.IncludeVals
+Description : Attribute for adding values to a request
+
+This module defines an attribute that allows you to include additional values in a request
+<https://github.com/bigskysoftware/htmx-extensions/blob/main/src/include-vals/README.md>
+-}
 module Lucid.Htmx.Extension.IncludeVals where
 
 import Data.Text (Text)
