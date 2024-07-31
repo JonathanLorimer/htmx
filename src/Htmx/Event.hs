@@ -1,15 +1,15 @@
 {- |
-Module      : Lucid.Htmx.Event
+Module      : Htmx.Event
 Description : Enumerates htmx specific events
 
 This module defines a type that represents events that originate from the HTMX
 library itself
 <https://htmx.org/reference/#events>
 -}
-module Lucid.Htmx.Event where
+module Htmx.Event where
 
 import Data.Text (Text)
-import Lucid.Htmx.Render
+import Htmx.Render
 
 -- | <https://htmx.org/reference/#events>
 -- A sum type that represents possible events originating from the HTMX

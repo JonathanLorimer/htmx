@@ -1,15 +1,16 @@
 {-# LANGUAGE DataKinds #-}
+
 {- |
-Module      : Lucid.Htmx.Servant.ResponseHeaders
+Module      : Htmx.Servant.ResponseHeaders
 Description : Helper types for HTMX response headers
 
 <https://htmx.org/reference/#response_headers>
 -}
-module Lucid.Htmx.Servant.RequestHeaders where
+module Htmx.Servant.ResponseHeaders where
 
-import Servant.API.Header (Header)
 import Data.Text (Text)
-import Lucid.Htmx.Swap (Swap)
+import Htmx.Swap (Swap)
+import Servant.API.Header (Header)
 
 -- | allows you to do a client-side redirect that does not do a full page reload
 type HXLocation = Header "HX-Location" Text
@@ -29,7 +30,7 @@ type HXReplaceUrl = Header "HX-Replace-Url" Bool
 -- | replaces the current URL in the location bar
 type HXReswap = Header "HX-Reswap" Swap
 
--- | a CSS selector that updates the target of the 
+-- | a CSS selector that updates the target of the
 -- content update to a different element on the page
 type HXRetarget = Header "HX-Retarget" Text
 
@@ -38,7 +39,7 @@ type HXRetarget = Header "HX-Retarget" Text
 type HXReselect = Header "HX-Reselect" Text
 
 -- | allows you to trigger client-side events
-type HXTrigger = Header "HX-Trigger" Text 
+type HXTrigger = Header "HX-Trigger" Text
 
 -- | allows you to trigger client-side events after the settle step
 type HXTriggerAfterSettle = Header "HX-Trigger-After-Settle" Text

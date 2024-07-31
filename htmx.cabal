@@ -25,18 +25,17 @@ library
 
   -- cabal-fmt: expand src
   exposed-modules:
-    Lucid.Htmx
-    Lucid.Htmx.Core
-    Lucid.Htmx.Event
-    Lucid.Htmx.Extension
-    Lucid.Htmx.Extension.IncludeVals
-    Lucid.Htmx.Extra
-    Lucid.Htmx.Head
-    Lucid.Htmx.Render
-    Lucid.Htmx.Servant
-    Lucid.Htmx.Servant.RequestHeaders
-    Lucid.Htmx.Servant.ResponseHeaders
-    Lucid.Htmx.Swap
+    Htmx.Event
+    Htmx.Extension
+    Htmx.Lucid.Core
+    Htmx.Lucid.Extension.IncludeVals
+    Htmx.Lucid.Extra
+    Htmx.Lucid.Head
+    Htmx.Lucid.Servant
+    Htmx.Render
+    Htmx.Servant.RequestHeaders
+    Htmx.Servant.ResponseHeaders
+    Htmx.Swap
 
   hs-source-dirs:   src
   build-depends:

@@ -1,12 +1,12 @@
 {- |
-Module      : Lucid.Htmx.Head
+Module      : Htmx.Lucid.Head
 Description : Utilities for including HTMX in the html head tag
 
 This module defines utilities for installing HTMX and HTMX extensions
 via the head tag in your html document
 <https://htmx.org/docs/#installing>
 -}
-module Lucid.Htmx.Head (
+module Htmx.Lucid.Head (
     useHtmx,
     useHtmxVersion,
     useHtmxExtension,
@@ -16,17 +16,16 @@ module Lucid.Htmx.Head (
     recommendedVersion,
     htmxSrc,
     htmxSrcWithSemVer,
-    htmxExtSrc
+    htmxExtSrc,
 ) where
 
 import Data.Foldable (forM_)
 import Data.Text (Text, pack)
 import GHC.Natural (Natural)
+import Htmx.Extension
+import Htmx.Render
 import Lucid (Html, HtmlT, script_, src_)
 import Lucid.Base (Attribute, makeAttribute)
-import Lucid.Htmx.Extension
-import Lucid.Htmx.Render
-
 
 -- | Place in your template after @useHtmx@, but before where the extension is used via @hxExt_@
 -- NOTE: This uses 'recommendedVersion' as the version section of the URL
@@ -34,7 +33,8 @@ useHtmxExtension :: (Monad m) => HtmxExtension -> HtmlT m ()
 useHtmxExtension = useHtmxExtensionV recommendedVersion
 
 -- | Same as 'useHtmxExt' but lets you choose the version url
-useHtmxExtensionV :: (Monad m) => (Natural, Natural, Natural) -> HtmxExtension -> HtmlT m ()
+useHtmxExtensionV ::
+    (Monad m) => (Natural, Natural, Natural) -> HtmxExtension -> HtmlT m ()
 useHtmxExtensionV v ext = script_ [src_ $ htmxExtSrc v (render ext)] ("" :: Html ())
 
 -- | A typesafe version of 'useHtmxExtension' based on the "included" extensions
@@ -44,7 +44,8 @@ useHtmxExtensions :: (Monad m) => [HtmxExtension] -> HtmlT m ()
 useHtmxExtensions exts = forM_ exts useHtmxExtension
 
 -- | Same as 'useHtmxExts' but with a versioned url
-useHtmxExtensionsV :: (Monad m) => (Natural, Natural, Natural) -> [HtmxExtension] -> HtmlT m ()
+useHtmxExtensionsV ::
+    (Monad m) => (Natural, Natural, Natural) -> [HtmxExtension] -> HtmlT m ()
 useHtmxExtensionsV v exts = forM_ exts (useHtmxExtensionV v)
 
 -- | Place in your @head_@ tag to use htmx attributes in your lucid template
@@ -68,22 +69,23 @@ showT :: (Show a) => a -> Text
 showT = pack . show
 
 showSemVer :: (Natural, Natural, Natural) -> Text
-showSemVer (major, minor, patch) = "@"
-    <> showT major
-    <> "."
-    <> showT minor
-    <> "."
-    <> showT patch
+showSemVer (major, minor, patch) =
+    "@"
+        <> showT major
+        <> "."
+        <> showT minor
+        <> "."
+        <> showT patch
 
 htmxSrcWithSemVer :: (Natural, Natural, Natural) -> Text
 htmxSrcWithSemVer ver =
     htmxSrc <> showSemVer ver
 
 htmxExtSrc :: (Natural, Natural, Natural) -> Text -> Text
-htmxExtSrc ver ext = 
-    "https://unpkg.com/htmx-ext-" 
-    <> ext 
-    <> showSemVer ver 
-    <> "/"
-    <> ext
-    <> ".js"
+htmxExtSrc ver ext =
+    "https://unpkg.com/htmx-ext-"
+        <> ext
+        <> showSemVer ver
+        <> "/"
+        <> ext
+        <> ".js"

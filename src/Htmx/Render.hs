@@ -1,13 +1,13 @@
 {- |
-Module      : Lucid.Htmx.Render
+Module      : Htmx.Render
 Description : Typeclass for rendering domain types as HTMX compatible 'Text'
 
-This module defines a typeclass that doesn't have the historical baggage or 
+This module defines a typeclass that doesn't have the historical baggage or
 connotations of other text serialization typeclasses (like 'Show' or Display).
-The semantics of this class are supposed to be HTMX specific, i.e. serializing 
+The semantics of this class are supposed to be HTMX specific, i.e. serializing
 attribute values
 -}
-module Lucid.Htmx.Render where
+module Htmx.Render where
 
 import Data.Text (Text)
 

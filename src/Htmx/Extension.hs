@@ -1,14 +1,14 @@
 {- |
-Module      : Lucid.Htmx.Extension
+Module      : Htmx.Extension
 Description : Enumerates official HTMX extensions
 
 This module defines a sum type that represents the "included" HTMX extensions
 <https://htmx.org/extensions/#included>
 -}
-module Lucid.Htmx.Extension where
+module Htmx.Extension where
 
 import Data.Text (Text)
-import Lucid.Htmx.Render
+import Htmx.Render
 
 -- | <https://htmx.org/extensions/>
 --

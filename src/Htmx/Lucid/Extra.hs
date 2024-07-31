@@ -1,20 +1,20 @@
 {- |
-Module      : Lucid.Htmx.Extra
+Module      : Htmx.Lucid.Extra
 Description : Provides extra htmx tags
 
 This module defines additional attributes that can be used to get additional
 behaviour
 <https://htmx.org/reference/#attributes-additional>
 -}
-module Lucid.Htmx.Extra where
+module Htmx.Lucid.Extra where
 
 import Data.Foldable
 import Data.List (intersperse)
 import Data.Text (Text, pack)
+import Htmx.Extension
+import Htmx.Render
 import Lucid (Html, HtmlT, script_, src_)
 import Lucid.Base (Attribute, makeAttribute)
-import Lucid.Htmx.Extension
-import Lucid.Htmx.Render
 
 -- | <https://htmx.org/attributes/hx-boost/>
 -- add progressive enhancement for links and forms

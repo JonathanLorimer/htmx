@@ -1,18 +1,18 @@
 {- |
-Module      : Lucid.Htmx.Core
+Module      : Htmx.Lucid.Core
 Description : Provides core htmx tags
 
 This module defines the "core" 11 HTMX attributes
 <https://htmx.org/reference/#attributes>
 -}
-module Lucid.Htmx.Core where
+module Htmx.Lucid.Core where
 
 import Data.Text (Text, pack)
+import Htmx.Event
+import Htmx.Render
+import Htmx.Swap (Swap)
 import Lucid (Html, HtmlT, script_, src_)
 import Lucid.Base (Attribute, makeAttribute)
-import Lucid.Htmx.Event
-import Lucid.Htmx.Render
-import Lucid.Htmx.Swap (Swap)
 
 -- | <https://htmx.org/attributes/hx-get/>
 -- issues a GET to the specified URL

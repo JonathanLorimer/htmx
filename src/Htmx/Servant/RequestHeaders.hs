@@ -1,14 +1,15 @@
 {-# LANGUAGE DataKinds #-}
+
 {- |
-Module      : Lucid.Htmx.Servant.RequestHeaders
+Module      : Htmx.Servant.RequestHeaders
 Description : Helper types for HTMX request headers
 
 <https://htmx.org/reference/#request_headers>
 -}
-module Lucid.Htmx.Servant.RequestHeaders where
+module Htmx.Servant.RequestHeaders where
 
-import Servant.API.Header (Header)
 import Data.Text (Text)
+import Servant.API.Header (Header)
 
 -- | indicates that the request is via an element using hx-boost
 type HXBoosted = Header "HX-Boosted" Bool
