@@ -43,7 +43,9 @@
       hsPkgs,
       pkgs,
       ...
-    }: {
+    }: let
+      hkg = pkgs.writeShellScriptBin "hkg" (builtins.readFile ./scripts/hkg.sh);
+    in {
       default = hsPkgs.shellFor {
         name = "htmx";
         shellHook = ''
@@ -61,6 +63,7 @@
           haskellPackages.cabal-fmt
           haskellPackages.cabal-install
           hlint
+          hkg
         ];
       };
     });

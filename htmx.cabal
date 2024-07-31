@@ -5,6 +5,7 @@ synopsis:           Use htmx with various haskell libraries
 description:
   Please see the README on GitHub at <https://github.com/JonathanLorimer/htmx#readme>
 
+license:            MIT
 category:           Web, HTML
 author:             Jonathan Lorimer
 maintainer:         jonathanlorimer@pm.me
