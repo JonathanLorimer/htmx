@@ -1,12 +1,12 @@
 {- |
-Module      : Htmx.Lucid.Servant
+Module      : Htmx.Servant.Lucid
 Description : Typesafe versions of HTMX request tags
 
 This module exports Lucid combinators that leverage the Servant 'Link'
 type to guarantee that they are live URLs, therefore making the requests
 "safe".
 -}
-module Htmx.Lucid.Servant (
+module Htmx.Servant.Lucid (
     hxDeleteSafe_,
     hxGetSafe_,
     hxPatchSafe_,

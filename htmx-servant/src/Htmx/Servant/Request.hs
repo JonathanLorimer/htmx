@@ -1,12 +1,10 @@
-{-# LANGUAGE DataKinds #-}
-
 {- |
 Module      : Htmx.Servant.RequestHeaders
 Description : Helper types for HTMX request headers
 
 <https://htmx.org/reference/#request_headers>
 -}
-module Htmx.Servant.RequestHeaders where
+module Htmx.Servant.Request where
 
 import Data.Text (Text)
 import Servant.API.Header (Header)

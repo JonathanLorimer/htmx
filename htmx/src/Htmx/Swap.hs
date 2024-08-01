@@ -9,7 +9,7 @@ module Htmx.Swap where
 
 import Data.Text (Text, pack)
 import Htmx.Render
-import Servant.API (FromHttpApiData (..), ToHttpApiData (..))
+import Web.HttpApiData (FromHttpApiData (..), ToHttpApiData (..))
 
 -- | <https://htmx.org/attributes/hx-swap/>
 -- The different styles that can be used for swapping in content.

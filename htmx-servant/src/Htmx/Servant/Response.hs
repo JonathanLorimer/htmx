@@ -1,12 +1,10 @@
-{-# LANGUAGE DataKinds #-}
-
 {- |
 Module      : Htmx.Servant.ResponseHeaders
 Description : Helper types for HTMX response headers
 
 <https://htmx.org/reference/#response_headers>
 -}
-module Htmx.Servant.ResponseHeaders where
+module Htmx.Servant.Response where
 
 import Data.Text (Text)
 import Htmx.Swap (Swap)

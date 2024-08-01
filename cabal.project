@@ -1,0 +1,4 @@
+packages:
+  htmx/htmx.cabal
+  htmx-lucid/htmx-lucid.cabal
+  htmx-servant/htmx-servant.cabal

@@ -19,7 +19,9 @@
             overrides = hfinal: hprev:
               with pkgs.haskell.lib; {
                 # Internal Packages
-                htmx = overrideCabal (hfinal.callCabal2nix "htmx" ./. {}) (drv: {checkPhase = "true";});
+                htmx = hfinal.callCabal2nix "htmx" ./htmx {};
+                htmx-lucid = hfinal.callCabal2nix "htmx-lucid" ./htmx-lucid {};
+                htmx-servant = hfinal.callCabal2nix "htmx-servant" ./htmx-servant {};
               };
           };
         });
@@ -45,6 +47,16 @@
       ...
     }: let
       hkg = pkgs.writeShellScriptBin "hkg" (builtins.readFile ./scripts/hkg.sh);
+      packages = ["htmx" "htmx-lucid" "htmx-servant"];
+      format = pkgs.writeShellScriptBin "format" (
+        pkgs.lib.strings.concatMapStringsSep "\n" (
+          package: ''
+            fourmolu -i ./${package}
+            cabal-fmt -i ./${package}/${package}.cabal
+          ''
+        )
+        packages
+      );
     in {
       default = hsPkgs.shellFor {
         name = "htmx";
@@ -54,6 +66,8 @@
         '';
         packages = p: [
           p.htmx
+          p.htmx-lucid
+          p.htmx-servant
         ];
         buildInputs = with pkgs; [
           hsPkgs.haskell-language-server
@@ -64,6 +78,7 @@
           haskellPackages.cabal-install
           hlint
           hkg
+          format
         ];
       };
     });
