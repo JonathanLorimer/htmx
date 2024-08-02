@@ -34,7 +34,7 @@ library
   hs-source-dirs:   src
   build-depends:
     , base   >=4.7      && <5
-    , htmx
+    , htmx   == 0.1.0.1
     , lucid2 >=0.0.20221012
     , text   >=2        && <3
 

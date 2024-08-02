@@ -32,18 +32,17 @@ import Lucid.Base (Attributes, makeAttributes)
 useHtmxExtension :: (Monad m) => HtmxExtension -> HtmlT m ()
 useHtmxExtension = useHtmxExtensionV recommendedVersion
 
--- | Same as 'useHtmxExt' but lets you choose the version url
+-- | Same as 'useHtmxExtension' but lets you choose the version url
 useHtmxExtensionV ::
     (Monad m) => (Natural, Natural, Natural) -> HtmxExtension -> HtmlT m ()
 useHtmxExtensionV v ext = script_ [src_ $ htmxExtSrc v (render ext)] ("" :: Html ())
 
--- | A typesafe version of 'useHtmxExtension' based on the "included" extensions
--- that the htmx codebase is tested against
+-- | A version of 'useHtmxExtension' that works on a list of extensions
 -- NOTE: This uses 'recommendedVersion' as the version section of the URL
 useHtmxExtensions :: (Monad m) => [HtmxExtension] -> HtmlT m ()
 useHtmxExtensions exts = forM_ exts useHtmxExtension
 
--- | Same as 'useHtmxExts' but with a versioned url
+-- | Same as 'useHtmxExtensions' but with a versioned url
 useHtmxExtensionsV ::
     (Monad m) => (Natural, Natural, Natural) -> [HtmxExtension] -> HtmlT m ()
 useHtmxExtensionsV v exts = forM_ exts (useHtmxExtensionV v)
@@ -62,6 +61,7 @@ useHtmxVersion semVer = script_ [src_ $ htmxSrcWithSemVer semVer] ("" :: Html ()
 recommendedVersion :: (Natural, Natural, Natural)
 recommendedVersion = (2, 0, 0)
 
+-- | constant for the htmx cdn
 htmxSrc :: Text
 htmxSrc = "https://unpkg.com/htmx.org"
 
@@ -77,10 +77,12 @@ showSemVer (major, minor, patch) =
         <> "."
         <> showT patch
 
+-- | Creates a string with the htmx CDN specified to version
 htmxSrcWithSemVer :: (Natural, Natural, Natural) -> Text
 htmxSrcWithSemVer ver =
     htmxSrc <> showSemVer ver
 
+-- | Creates a string with the htmx extension CDN specified to version
 htmxExtSrc :: (Natural, Natural, Natural) -> Text -> Text
 htmxExtSrc ver ext =
     "https://unpkg.com/htmx-ext-"
