@@ -90,6 +90,8 @@ hxInclude_ = makeAttributes "hx-include"
 hxIndicator_ :: Text -> Attributes
 hxIndicator_ = makeAttributes "hx-indicator"
 
+-- | An enumeration of the filter types based on the documentation here:
+-- <https://htmx.org/attributes/hx-params/>
 data ParamsFilter
     = -- | Include all parameters (default)
       All
@@ -149,6 +151,8 @@ hxRequest_ = makeAttributes "hx-request"
 hxSse_ :: Text -> Attributes
 hxSse_ = makeAttributes "hx-sse"
 
+-- | An enumeration of the sync strategies based on the documentation here:
+-- <https://htmx.org/attributes/hx-sync/>
 data SyncStrategy
     = -- | drop (ignore) this request if an existing request is in flight (the default)
       SyncDrop

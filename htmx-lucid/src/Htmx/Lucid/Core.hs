@@ -45,7 +45,7 @@ hxSelectOob_ = makeAttributes "hx-select-oob"
 hxSwap_ :: Text -> Attributes
 hxSwap_ = makeAttributes "hx-swap"
 
--- | Like 'hxSwap' but takes a strongly typed swap style.
+-- | Like 'hxSwap_' but takes a strongly typed swap style.
 -- This doesn't allow [modifiers](https://htmx.org/attributes/hx-swap/#modifiers) to be applied.
 hxSwapS_ :: Swap -> Attributes
 hxSwapS_ = makeAttributes "hx-swap" . render
@@ -70,6 +70,8 @@ hxTrigger_ = makeAttributes "hx-trigger"
 hxVals_ :: Text -> Attributes
 hxVals_ = makeAttributes "hx-vals"
 
+-- | Indicates whether you are handling an arbitrary DOM event
+-- or on of the bespoke 'HtmxEvent' (defined by the htmx js bundle)
 data OnEvent = DomOnEvent Text | HtmxOnEvent HtmxEvent
 
 -- | <https://htmx.org/attributes/hx-on/>
