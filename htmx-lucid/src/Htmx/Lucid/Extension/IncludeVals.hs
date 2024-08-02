@@ -8,11 +8,10 @@ This module defines an attribute that allows you to include additional values in
 module Htmx.Lucid.Extension.IncludeVals where
 
 import Data.Text (Text)
-import Lucid
-import Lucid.Base (makeAttribute)
+import Lucid.Base (makeAttributes, Attributes)
 
 -- | <https://github.com/bigskysoftware/htmx-extensions/blob/main/src/include-vals/README.md>
 -- The value of this attribute is one or more name/value pairs, which will be evaluated as the fields in a javascript object literal.
 -- i.e. "included:true, computed: computeValue()"
-includeVals_ :: Text -> Attribute
-includeVals_ = makeAttribute "include-vals"
+includeVals_ :: Text -> Attributes
+includeVals_ = makeAttributes "include-vals"

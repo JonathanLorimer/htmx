@@ -25,7 +25,7 @@ import GHC.Natural (Natural)
 import Htmx.Extension
 import Htmx.Render
 import Lucid (Html, HtmlT, script_, src_)
-import Lucid.Base (Attribute, makeAttribute)
+import Lucid.Base (Attributes, makeAttributes)
 
 -- | Place in your template after @useHtmx@, but before where the extension is used via @hxExt_@
 -- NOTE: This uses 'recommendedVersion' as the version section of the URL
