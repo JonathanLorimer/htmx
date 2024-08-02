@@ -12,69 +12,69 @@ import Htmx.Event
 import Htmx.Render
 import Htmx.Swap (Swap)
 import Lucid (Html, HtmlT, script_, src_)
-import Lucid.Base (Attribute, makeAttribute)
+import Lucid.Base (Attributes, makeAttributes)
 
 -- | <https://htmx.org/attributes/hx-get/>
 -- issues a GET to the specified URL
-hxGet_ :: Text -> Attribute
-hxGet_ = makeAttribute "hx-get"
+hxGet_ :: Text -> Attributes
+hxGet_ = makeAttributes "hx-get"
 
 -- | <https://htmx.org/attributes/hx-get/>
 -- issues a POST to the specified URL
-hxPost_ :: Text -> Attribute
-hxPost_ = makeAttribute "hx-post"
+hxPost_ :: Text -> Attributes
+hxPost_ = makeAttributes "hx-post"
 
 -- | <https://htmx.org/attributes/hx-push-url/>
 -- push a URL into the browser location bar to create history
-hxPushUrl_ :: Text -> Attribute
-hxPushUrl_ = makeAttribute "hx-push-url"
+hxPushUrl_ :: Text -> Attributes
+hxPushUrl_ = makeAttributes "hx-push-url"
 
 -- | <https://htmx.org/attributes/hx-select/>
 -- select content to swap in from a response
-hxSelect_ :: Text -> Attribute
-hxSelect_ = makeAttribute "hx-select"
+hxSelect_ :: Text -> Attributes
+hxSelect_ = makeAttributes "hx-select"
 
 -- | <https://htmx.org/attributes/hx-select-oob/>
 -- select content to swap in from a response, somewhere other than the target
 -- (out of band)
-hxSelectOob_ :: Text -> Attribute
-hxSelectOob_ = makeAttribute "hx-select-oob"
+hxSelectOob_ :: Text -> Attributes
+hxSelectOob_ = makeAttributes "hx-select-oob"
 
 -- | <https://htmx.org/attributes/hx-swap/>
 -- controls how content will swap in (outerHTML, beforeend, afterend, …)
-hxSwap_ :: Text -> Attribute
-hxSwap_ = makeAttribute "hx-swap"
+hxSwap_ :: Text -> Attributes
+hxSwap_ = makeAttributes "hx-swap"
 
 -- | Like 'hxSwap' but takes a strongly typed swap style.
 -- This doesn't allow [modifiers](https://htmx.org/attributes/hx-swap/#modifiers) to be applied.
-hxSwapS_ :: Swap -> Attribute
-hxSwapS_ = makeAttribute "hx-swap" . render
+hxSwapS_ :: Swap -> Attributes
+hxSwapS_ = makeAttributes "hx-swap" . render
 
 -- | <https://htmx.org/attributes/hx-swap-oob/>
 -- mark element to swap in from a response (out of band)
-hxSwapOob_ :: Text -> Attribute
-hxSwapOob_ = makeAttribute "hx-swap-oob"
+hxSwapOob_ :: Text -> Attributes
+hxSwapOob_ = makeAttributes "hx-swap-oob"
 
 -- | <https://htmx.org/attributes/hx-target/>
 -- specifies the target element to be swapped
-hxTarget_ :: Text -> Attribute
-hxTarget_ = makeAttribute "hx-target"
+hxTarget_ :: Text -> Attributes
+hxTarget_ = makeAttributes "hx-target"
 
 -- | <https://htmx.org/attributes/hx-trigger/>
 -- specifies the event that triggers the request
-hxTrigger_ :: Text -> Attribute
-hxTrigger_ = makeAttribute "hx-trigger"
+hxTrigger_ :: Text -> Attributes
+hxTrigger_ = makeAttributes "hx-trigger"
 
 -- | <https://htmx.org/attributes/hx-vals/>
 -- add values to submit with the request (JSON format)
-hxVals_ :: Text -> Attribute
-hxVals_ = makeAttribute "hx-vals"
+hxVals_ :: Text -> Attributes
+hxVals_ = makeAttributes "hx-vals"
 
 data OnEvent = DomOnEvent Text | HtmxOnEvent HtmxEvent
 
 -- | <https://htmx.org/attributes/hx-on/>
 -- handle events with inline scripts on elements
-hxOn_ :: OnEvent -> Text -> Attribute
+hxOn_ :: OnEvent -> Text -> Attributes
 hxOn_ = \case
-    DomOnEvent event -> makeAttribute $ "hx-on:" <> event
-    HtmxOnEvent htmxEvent -> makeAttribute $ "hx-on::" <> render htmxEvent
+    DomOnEvent event -> makeAttributes $ "hx-on:" <> event
+    HtmxOnEvent htmxEvent -> makeAttributes $ "hx-on::" <> render htmxEvent

@@ -27,28 +27,28 @@ import Htmx.Lucid.Extra (
     hxPatch_,
     hxPut_,
  )
-import Lucid.Base (Attribute)
+import Lucid.Base (Attributes)
 import Servant.API (ToHttpApiData (..), toUrlPiece)
 import Servant.Links (Link)
 
-hxDeleteSafe_ :: Link -> Attribute
+hxDeleteSafe_ :: Link -> Attributes
 hxDeleteSafe_ = hxDelete_ . toUrl
 
-hxGetSafe_ :: Link -> Attribute
+hxGetSafe_ :: Link -> Attributes
 hxGetSafe_ = hxGet_ . toUrl
 
-hxPatchSafe_ :: Link -> Attribute
+hxPatchSafe_ :: Link -> Attributes
 hxPatchSafe_ = hxPatch_ . toUrl
 
-hxPostSafe_ :: Link -> Attribute
+hxPostSafe_ :: Link -> Attributes
 hxPostSafe_ = hxPost_ . toUrl
 
-hxPushUrlSafe_ :: Either Bool Link -> Attribute
+hxPushUrlSafe_ :: Either Bool Link -> Attributes
 hxPushUrlSafe_ boolOrUrl = hxPushUrl_ $ case boolOrUrl of
     Left bool -> if bool then "true" else "false"
     Right url -> toUrl url
 
-hxPutSafe_ :: Link -> Attribute
+hxPutSafe_ :: Link -> Attributes
 hxPutSafe_ = hxPut_ . toUrl
 
 toUrl :: (ToHttpApiData a) => a -> Text
