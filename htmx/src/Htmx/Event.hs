@@ -108,6 +108,12 @@ data HtmxEvent
       -- events
       XhrProgress
 
+-- | We render htmx events as kebab case since browsers require lower casing,
+--   and both camelCase / kebab-case are supported by htmx
+--   
+--  - [HTMX events reference](https://htmx.org/reference/#events)
+--  - [hx-on documentation](https://htmx.org/attributes/hx-on/) which explains the preference for kebab case event names
+--  - [HTMX event naming docs](https://htmx.org/docs/#event_naming)
 instance Render HtmxEvent where
     render = \case
         Abort -> "abort"
