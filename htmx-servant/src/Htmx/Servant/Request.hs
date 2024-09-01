@@ -22,7 +22,7 @@ type HXHistoryRestoreRequest = Header "HX-History-Restore-Request" Bool
 type HXPrompt a = Header "HX-Prompt" a
 
 -- | always “true”
-type HXRequest = Header "HX-Prompt" Bool
+type HXRequest = Header "HX-Request" Bool
 
 -- | the id of the target element if it exists
 type HXTarget = Header "HX-Target" Text
