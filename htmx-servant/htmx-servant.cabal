@@ -1,6 +1,6 @@
 cabal-version:      3.6
 name:               htmx-servant
-version:            0.2.0.1
+version:            0.2.0.2
 synopsis:           Use htmx with servant
 description:
   Please see the README on GitHub at <https://github.com/JonathanLorimer/htmx#readme>
@@ -34,8 +34,8 @@ library
   hs-source-dirs:   src
   build-depends:
     , base        >=4.7      && <5
-    , htmx
-    , htmx-lucid
+    , htmx        == 0.1.0.2
+    , htmx-lucid  == 0.2.0.1
     , lucid2      >=0.0.20221012
     , servant     >=0.19     && <0.30
     , text        >=2        && <3

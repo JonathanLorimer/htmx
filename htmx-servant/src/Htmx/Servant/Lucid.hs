@@ -31,23 +31,29 @@ import Lucid.Base (Attributes)
 import Servant.API (ToHttpApiData (..), toUrlPiece)
 import Servant.Links (Link)
 
+-- | Type-safe version of 'hxDelete_'
 hxDeleteSafe_ :: Link -> Attributes
 hxDeleteSafe_ = hxDelete_ . toUrl
 
+-- | Type-safe version of 'hxGet_'
 hxGetSafe_ :: Link -> Attributes
 hxGetSafe_ = hxGet_ . toUrl
 
+-- | Type-safe version of 'hxPatch_'
 hxPatchSafe_ :: Link -> Attributes
 hxPatchSafe_ = hxPatch_ . toUrl
 
+-- | Type-safe version of 'hxPatch_'
 hxPostSafe_ :: Link -> Attributes
 hxPostSafe_ = hxPost_ . toUrl
 
+-- | Type-safe version of 'hxPushUrl_'
 hxPushUrlSafe_ :: Either Bool Link -> Attributes
 hxPushUrlSafe_ boolOrUrl = hxPushUrl_ $ case boolOrUrl of
     Left bool -> if bool then "true" else "false"
     Right url -> toUrl url
 
+-- | Type-safe version of 'hxPut_'
 hxPutSafe_ :: Link -> Attributes
 hxPutSafe_ = hxPut_ . toUrl
 

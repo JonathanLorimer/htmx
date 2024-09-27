@@ -87,6 +87,6 @@ instance Render HtmxExtension where
         RemoveMe -> "remove-me"
         ResponseTargets -> "response-targets"
         Restored -> "restored"
-        ServerSentEvents -> "server-sent-events"
-        WebSockets -> "web-sockets"
+        ServerSentEvents -> "sse"
+        WebSockets -> "ws"
         PathParams -> "path-params"
