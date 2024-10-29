@@ -31,7 +31,6 @@
     # nix build
     packages = forAllSystems (
       {hsPkgs, ...}: {
-        inherit hsPkgs;
         htmx = hsPkgs.htmx;
         default = hsPkgs.htmx;
       }
